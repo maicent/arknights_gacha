@@ -1,6 +1,6 @@
-var main = echarts.init(document.getElementById('main'));
-
+var laytpl = layui.laytpl;
 function fn(res) {
+	var main = echarts.init(document.getElementById('main'));
 	// console.log(res.data)
 	var six = []
 	var five = []
@@ -33,7 +33,7 @@ function fn(res) {
 			three.push(agent[i]);
 		}
 	}
-
+	
 	// 整合成echart饼图所需要的数据
 	var ChartData = [];
 	var sixData = {};
@@ -79,4 +79,24 @@ function fn(res) {
 		}]
 	};
 	main.setOption(option);
+	
+	
+	times = 0;
+	RecentTimesArr = [];
+	for(var i = 0, l = six.length; i < l; i++){
+		RecentTimes = six[i].times - times
+		times = six[i].times;
+		RecentTimesArr[i] = RecentTimes;
+		if (i == six.length-1){
+			RecentTimesArr[i+1] = agent.length - six[i].times;
+		}
+	}
+	for(var i = 0, l = six.length; i < l; i++){
+		six[i]['retimes'] = RecentTimesArr[i+1];
+	}
+	var getTpl = RecentSix.innerHTML,
+		view = document.getElementById('RecentSixView');
+	laytpl(getTpl).render(six, function(html) {
+		view.innerHTML = html;
+	});
 }
