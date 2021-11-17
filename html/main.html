@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>主页面</title>
+		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+	</head>
+	<body>
+		<div class="layui-row" style="position: absolute; width: 1355px; height: 730px;">
+			<div class="layui-col-md6">
+				<div id="main" style="width: 100%;height:730px;"></div>
+			</div>
+			<div class="layui-col-md6">
+				<div class="layui-card">
+					<div class="layui-card-header"><b>最近六星</b></div>
+					<div class="layui-card-body">
+						<table class="layui-table">
+							<thead>
+								<tr>
+									<th>干员名</th>
+									<th>抽取次数</th>
+									<th>是否NEW</th>
+								</tr>
+							</thead>
+							<tbody id="RecentSixView"></tbody>
+						</table>
+					</div>
+				</div>
+				<div class="layui-card">
+					<div class="layui-card-header"><b>寻访统计</b></div>
+					<div class="layui-card-body">
+						<table class="layui-table">
+							<tbody id="GachaStatisticsView">
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script id="RecentSix" type="text/html">
+
+		{{# layui.each(d, function(index, item){ }}
+			<tr>
+				<td>
+					{{ item.name }}
+				</td>
+				<td>
+					{{ item.retimes }}
+				</td>
+				<td>
+					{{ item.isNew }}
+				</td>
+			</tr>
+			{{# }); }}
+			{{# if(d.length === 0){ }}
+				无数据
+			{{# } }}
+
+		</script>
+		<script id="GachaStatistics" type="text/html">
+
+
+		{{# layui.each(d, function(index, item){ }}
+			<tr>
+				<td>平均出货</td>
+				<td>{{item.avg}}</td>
+			</tr>
+			<tr>
+				<td>您属于</td>
+				<td>{{item.luck}}！</td>
+			</tr>
+			<tr>
+				<td>未出六星数</td>
+				<td>您已经{{item.NoSix}}抽没出六星了</td>
+			</tr>
+			<tr>
+				<td>
+					<font color="#c47416">六星数</font>
+				</td>
+				<td>
+					<font color="#c47416">{{item.SixNum}}</font>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font color="#f2c96d">五星数</font>
+				</td>
+				<td>
+					<font color="#f2c96d">{{item.FiveNum}}</font>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font color="#a089e0">四星数
+				</td>
+				<td>
+					<font color="#a089e0">{{item.FourNum}}
+				</td>
+			</tr>
+			{{# }); }}
+
+
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<!--您的Layui代码start-->
+		<script type="text/javascript">
+			layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function() {
+				var laydate = layui.laydate,
+					laypage = layui.laypage,
+					layer = layui.layer,
+					table = layui.table,
+					carousel = layui.carousel,
+					upload = layui.upload,
+					laytpl = layui.laytpl,
+					element = layui.element;
+
+				/*layer弹出一个示例*/
+				layer.msg('Hello World');
+
+
+			});
+		</script>
+		<script src="charts.js"></script>
+		<script type="text/javascript" src="data.json?callback=fn"></script>
+
+	</body>
+</html>

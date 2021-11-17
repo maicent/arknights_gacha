@@ -8,6 +8,7 @@ from PyQt5.QtWebEngineWidgets import *
 class index_mainWindow(QMainWindow):
     def __init__(self):
         super(index_mainWindow, self).__init__()
+        self.setWindowIcon(QIcon('images/ico.jpg'))
         self.setWindowTitle('明日方舟寻访统计工具')  # 窗口标题
         self.setGeometry(250, 150, 1375, 750)  # 窗口的大小和位置设置
         self.browser = QWebEngineView()
