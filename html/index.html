@@ -3,8 +3,58 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+		<style>
+			body {
+				background: url(img/bg2.png) no-repeat;
+			}
+
+			.layui-progress-text {
+				position: relative;
+				top: -20px;
+				line-height: 18px;
+				font-size: 12px;
+				color: #fff;
+			}
+		</style>
 	</head>
 	<body>
-		<a href="main.html">点击进入</a>
+		<div class="load" style="width: 1275px;height: 750px;">
+<!-- 			<div style="position: absolute; margin-top: 40%; width:1375px">
+				<div class="layui-progress" lay-showpercent="true" lay-filter="demo"
+					style="margin-top: 70px; margin-bottom: 0;">
+					<div class="layui-progress-bar" lay-percent="0%" style="background-color: #EEC604;">></div>
+				</div>
+			</div> -->
+		</div>
+
+		<script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<script>
+			layui.use('element', function() {
+				var $ = layui.jquery,
+					element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+				//触发事件
+
+				function loading() {
+					var n = 0,
+						timer = setInterval(function() {
+							n = n + Math.random() * 40 | 0;
+							if (n > 100) {
+								n = 100;
+								clearInterval(timer);
+							}
+							element.progress('demo', n + '%');
+						}, 300 + Math.random() * 1000);
+					console.log(n);
+				};
+				loading();
+				$('.load').click(function() {
+					window.location.href = "main.html";
+				})
+				//
+			});
+		</script>
 	</body>
 </html>
