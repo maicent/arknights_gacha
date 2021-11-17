@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<meta http-equiv="refresh" content="3;main.html">
 		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
 		<style>
 			body {
@@ -20,7 +21,7 @@
 	</head>
 	<body>
 		<div class="load" style="width: 1275px;height: 750px;">
-<!-- 			<div style="position: absolute; margin-top: 40%; width:1375px">
+			<!-- 			<div style="position: absolute; margin-top: 40%; width:1375px">
 				<div class="layui-progress" lay-showpercent="true" lay-filter="demo"
 					style="margin-top: 70px; margin-bottom: 0;">
 					<div class="layui-progress-bar" lay-percent="0%" style="background-color: #EEC604;">></div>
@@ -35,8 +36,6 @@
 				var $ = layui.jquery,
 					element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
 
-				//触发事件
-
 				function loading() {
 					var n = 0,
 						timer = setInterval(function() {
@@ -49,7 +48,9 @@
 						}, 300 + Math.random() * 1000);
 					console.log(n);
 				};
-				loading();
+				//loading();
+
+				
 				$('.load').click(function() {
 					window.location.href = "main.html";
 				})

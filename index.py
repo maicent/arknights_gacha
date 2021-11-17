@@ -11,7 +11,6 @@ class index_mainWindow(QMainWindow):
         self.setWindowTitle('明日方舟寻访统计工具')  # 窗口标题
         self.setGeometry(250, 150, 1375, 750)  # 窗口的大小和位置设置
         self.browser = QWebEngineView()
-        # 加载html代码(这里注意html代码是用三个单引号包围起来的)
         self.browser.load(QUrl(QFileInfo("./html/index.html").absoluteFilePath()))
         self.setCentralWidget(self.browser)
 
