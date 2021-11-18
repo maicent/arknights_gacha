@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
 	</head>
 	<body>
-		<div class="layui-row" style="position: absolute; width: 1355px; height: 730px;">
+		<div class="layui-row" style="width: 1355px; height: 600px;">
 			<div class="layui-col-md6">
 				<div id="main" style="width: 100%;height:730px;"></div>
 			</div>
@@ -30,14 +30,26 @@
 					<div class="layui-card-header"><b>寻访统计</b></div>
 					<div class="layui-card-body">
 						<table class="layui-table">
-							<tbody id="GachaStatisticsView">
-								
-							</tbody>
+							<tbody id="GachaStatisticsView"></tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<blockquote class="layui-elem-quote layui-quote-nm">
+			感谢各位博士的使用与支持，使用反馈BUG提交合作请进
+			<input class="layui-btn layui-btn-primary layui-border-blue" id="button" type="button" value="点击进入">
+			<br>©麦创软件设计工作室
+		</blockquote>
+
+		<script>
+		    var btn = document.getElementById("button");
+		    btn.onclick =function(){
+		        window.open("https://jq.qq.com/?_wv=1027&k=OtCYuIKW");  
+		    }
+		</script>
+
 		<script id="RecentSix" type="text/html">
 
 		{{# layui.each(d, function(index, item){ }}
@@ -53,9 +65,9 @@
 				</td>
 			</tr>
 			{{# }); }}
-			{{# if(d.length === 0){ }}
-				无数据
-			{{# } }}
+				{{# if(d.length === 0){ }}
+					无数据
+					{{# } }}
 
 		</script>
 		<script id="GachaStatistics" type="text/html">
@@ -105,7 +117,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
 		<script src="https://www.layuicdn.com/layui/layui.js"></script>
-		<!--您的Layui代码start-->
 		<script type="text/javascript">
 			layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function() {
 				var laydate = layui.laydate,
@@ -116,9 +127,6 @@
 					upload = layui.upload,
 					laytpl = layui.laytpl,
 					element = layui.element;
-
-				/*layer弹出一个示例*/
-				layer.msg('Hello World');
 
 
 			});
