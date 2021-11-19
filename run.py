@@ -4,6 +4,7 @@ from index import *
 import function
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+import requests
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
@@ -100,13 +101,63 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             QMessageBox.warning(self, "警告", "请输入用户名密码！", QMessageBox.Yes)
 
 
+class Ui_Updata(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(400, 168)
+        self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
+        self.buttonBox.setGeometry(QtCore.QRect(40, 120, 341, 32))
+        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(40, 20, 321, 41))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(40, 70, 321, 41))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+
+        self.retranslateUi(Dialog)
+        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.rejected.connect(Dialog.reject)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "更新提示"))
+        self.label.setText(_translate("Dialog", "请更新至最新版本"))
+        self.label_2.setText(_translate("Dialog", "官网：ark.maicent.com"))
+
+
 if __name__ == "__main__":
     import sys
 
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui_index = index_mainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+    v = '1.0.2'
+    url = 'http://ark.maicent.com/api/info.php'
+    re = requests.post(url)
+    v_new = re.json()['v']
+    if v == v_new:
+        app = QtWidgets.QApplication(sys.argv)
+        MainWindow = QtWidgets.QMainWindow()
+        ui = Ui_MainWindow()
+        ui_index = index_mainWindow()
+        ui.setupUi(MainWindow)
+        MainWindow.show()
+        sys.exit(app.exec_())
+    else:
+        app = QApplication(sys.argv)
+        MainDialog = QDialog()
+        myDialog = Ui_Updata()
+        myDialog.setupUi(MainDialog)
+        MainDialog.show()
+        sys.exit(app.exec_())
