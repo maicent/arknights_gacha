@@ -44,10 +44,7 @@
 		</blockquote>
 
 		<script>
-		    var btn = document.getElementById("button");
-		    btn.onclick =function(){
-		        window.open("https://jq.qq.com/?_wv=1027&k=OtCYuIKW");  
-		    }
+
 		</script>
 
 		<script id="RecentSix" type="text/html">
@@ -117,6 +114,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
 		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		<!--您的Layui代码start-->
 		<script type="text/javascript">
 			layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function() {
 				var laydate = layui.laydate,
@@ -127,6 +125,19 @@
 					upload = layui.upload,
 					laytpl = layui.laytpl,
 					element = layui.element;
+
+				var btn = document.getElementById("button");
+				btn.onclick = function() {
+					//window.open("https://jq.qq.com/?_wv=1027&k=OtCYuIKW");
+					layer.alert('QQ群：465187269')
+				}
+
+
+				layer.confirm('感谢各位博士的使用与支持！！！如果有任何问题请不要犹豫联系我们', {
+				  btn: ['联系我们','残忍拒绝'] //按钮
+				}, function(){
+				  layer.alert('QQ群：465187269', {icon: 1});
+				});
 
 
 			});
