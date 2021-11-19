@@ -142,7 +142,7 @@ class Ui_Updata(object):
 if __name__ == "__main__":
     import sys
 
-    v = '1.0.2'
+    v = '1.0.3'
     url = 'http://ark.maicent.com/api/info.php'
     re = requests.post(url)
     v_new = re.json()['v']
